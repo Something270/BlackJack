@@ -23,6 +23,8 @@ namespace BlackJack
         {
             sum = sum + rndoption;
         }
+
+
         static void Main(string[] args)
         {
             int option = StartOption();
@@ -38,12 +40,26 @@ namespace BlackJack
                 Console.WriteLine("Press 1 to draw again");
                 Console.WriteLine("Press 2 to hold");
                 option = Convert.ToInt32(Console.ReadLine());
-                
-                if(sum >=21)
+
+                if (sum > 21)
                 {
+                    Console.WriteLine("You lose!");
                     break;
+
                 }
             }
+            ///Holds cards while AI pulls its cards
+            while (option == 2)
+            {
+                Random rnd = new Random();
+                int rndAI = rnd.Next(17, 26);
+                Console.WriteLine("Current number: " + sum);
+                Console.WriteLine("AI number:" + rndAI);
+                break;
+            }
+
+
         }
+
     }
 }

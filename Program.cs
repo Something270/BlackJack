@@ -55,9 +55,34 @@ namespace BlackJack
                 int rndAI = rnd.Next(17, 26);
                 Console.WriteLine("Current number: " + sum);
                 Console.WriteLine("AI number:" + rndAI);
-                break;
-            }
 
+                ///Shows results
+                
+
+                if(sum > rndAI || sum == 21)
+                {
+                    Console.WriteLine("Player wins");
+                    break;
+                    
+                }
+                else if(rndAI > 21){
+                    Console.WriteLine("Player wins");
+                    break;
+                }
+                else if (sum == rndAI)
+                {
+                    Console.WriteLine("Tie!");
+                    break;
+                }
+                else{
+                    Console.WriteLine("AI wins!");
+                    break;
+                }
+            }
+                
+            {
+                
+            }
 
         }
 

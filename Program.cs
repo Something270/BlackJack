@@ -33,20 +33,26 @@ namespace BlackJack
             while (option == 1)
             {
                 Random rnd = new Random();
-                int rndoption = rnd.Next(1, 11);
+                int rndoption = rnd.Next(1,11);
                 values[0] = rndoption;
-                AddSum(rndoption);
-                Console.WriteLine("Current number: " + sum);
-                Console.WriteLine("Press 1 to draw again");
-                Console.WriteLine("Press 2 to hold");
-                option = Convert.ToInt32(Console.ReadLine());
-
                 if (sum > 21)
                 {
                     Console.WriteLine("You lose!");
                     break;
 
                 }
+
+                if (rndoption == 11 && sum + 11 >21)
+                {
+                    rndoption = 1;
+                }
+                AddSum(rndoption);
+                Console.WriteLine("Current number: " + sum);
+                Console.WriteLine("Press 1 to draw again");
+                Console.WriteLine("Press 2 to hold");
+                option = Convert.ToInt32(Console.ReadLine());
+
+
             }
             ///Holds cards while AI pulls its cards
             while (option == 2)
@@ -57,15 +63,16 @@ namespace BlackJack
                 Console.WriteLine("AI number:" + rndAI);
 
                 ///Shows results
-                
 
-                if(sum > rndAI || sum == 21)
+
+                if (sum > rndAI || sum == 21)
                 {
                     Console.WriteLine("Player wins");
                     break;
-                    
+
                 }
-                else if(rndAI > 21){
+                else if (rndAI > 21)
+                {
                     Console.WriteLine("Player wins");
                     break;
                 }
@@ -74,14 +81,15 @@ namespace BlackJack
                     Console.WriteLine("Tie!");
                     break;
                 }
-                else{
+                else
+                {
                     Console.WriteLine("AI wins!");
                     break;
                 }
             }
-                
+
             {
-                
+
             }
 
         }

@@ -11,7 +11,7 @@ namespace BlackJack
         /// <returns> 1 to draw a card </returns>
         static int StartOption()
         {
-            Console.WriteLine("Press 1 to draw.");
+            Console.WriteLine("Press 1 to begin");
             int option = Convert.ToInt32(Console.ReadLine());
             return option;
         }
@@ -29,12 +29,28 @@ namespace BlackJack
         {
             int option = StartOption();
             Int32[] values;
-            values = new int[1];
+            values = new int[2];
+            Random rnd = new Random();
+            int rndoption = rnd.Next(1, 11);
+            int rndoption2 = rnd.Next(1, 11);
+            AddSum(rndoption);
+            AddSum(rndoption2);
+            Console.WriteLine("Cards drawn: ");
+            Console.WriteLine(rndoption);
+            Console.WriteLine(rndoption2);
+
+            Console.WriteLine("Current number: " + sum);
+            Console.WriteLine("Press 1 to draw again");
+            Console.WriteLine("Press 2 to hold");
+            option = Convert.ToInt32(Console.ReadLine());
+
             while (option == 1)
             {
-                Random rnd = new Random();
-                int rndoption = rnd.Next(1,11);
+                rndoption = rnd.Next(1, 11);
+
+
                 values[0] = rndoption;
+                values[1] = rndoption2;
                 if (sum > 21)
                 {
                     Console.WriteLine("You lose!");
@@ -42,23 +58,25 @@ namespace BlackJack
 
                 }
 
-                if (rndoption == 11 && sum + 11 >21)
+                if (rndoption == 11 && sum + 11 > 21)
                 {
                     rndoption = 1;
                 }
                 AddSum(rndoption);
+                Console.WriteLine(rndoption);
                 Console.WriteLine("Current number: " + sum);
                 Console.WriteLine("Press 1 to draw again");
                 Console.WriteLine("Press 2 to hold");
                 option = Convert.ToInt32(Console.ReadLine());
 
 
+
             }
             ///Holds cards while AI pulls its cards
             while (option == 2)
             {
-                Random rnd = new Random();
-                int rndAI = rnd.Next(17, 26);
+                Random rnd2 = new Random();
+                int rndAI = rnd2.Next(17, 26);
                 Console.WriteLine("Current number: " + sum);
                 Console.WriteLine("AI number:" + rndAI);
 
